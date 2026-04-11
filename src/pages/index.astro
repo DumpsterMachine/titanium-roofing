@@ -1,0 +1,21 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import Guarantees from '../components/Guarantees.astro';
+import Services from '../components/Services.astro';
+import LeadForm from '../components/LeadForm.astro';
+---
+
+<Layout>
+  <Hero />
+  <Guarantees />
+  <Services />
+  <LeadForm />
+  
+  <footer class="bg-slate-900 text-slate-400 py-12 text-center border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="mb-2">&copy; {new Date().getFullYear()} Titanium Roofing. All rights reserved.</p>
+      <p class="text-sm">Licensed & Insured in Florida. Serving Riverview, Tampa, and surrounding areas.</p>
+    </div>
+  </footer>
+</Layout>
