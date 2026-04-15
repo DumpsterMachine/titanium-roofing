@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Hero from '../../components/Hero.astro';
+import Guarantees from '../../components/Guarantees.astro';
+import Services from '../../components/Services.astro';
+import LeadForm from '../../components/LeadForm.astro';
+import fs from 'fs';
+
+export async function getStaticPaths() {
+  const filePath = '/Users/mattai/.openclaw/workspace/titanium_neighborhoods.json';
+  const neighborhoods = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
+  
+  return neighborhoods.map((neighborhood) => {
+    // "Town 'n' Country" -> "town-n-country", "San Antonio (FL)" -> "san-antonio-fl"
+    const slug = neighborhood.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    return {
+      params: { neighborhood: slug },
+      props: { name: neighborhood },
+    };
+  });
+}
+
+const { name } = Astro.props;
+---
+
+<Layout 
+  title={`Titanium Roofing in ${name} | Local Roofers`}
+  description={`Looking for the best roofing company in ${name}? Titanium Roofing offers honest inspections and reliable service in ${name}, FL.`}
+>
+  <Hero location={name} />
+  <Guarantees />
+  <Services />
+  <LeadForm />
+  
+  <footer class="bg-slate-900 text-slate-400 py-12 text-center border-t border-slate-800">
+    <div class="max-w-6xl mx-auto px-6">
+      <p class="mb-2">&copy; {new Date().getFullYear()} Titanium Roofing. All rights reserved.</p>
+      <p class="text-sm">Licensed & Insured in Florida. Serving {name}, Tampa, and surrounding areas.</p>
+    </div>
+  </footer>
+</Layout>
