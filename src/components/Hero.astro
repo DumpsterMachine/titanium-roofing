@@ -6,28 +6,31 @@ interface Props {
 const { location } = Astro.props;
 const displayTitle = location ? `Titanium Roofing in ${location}` : 'Titanium Roofing.';
 ---
-<section class="relative bg-black text-white py-20 lg:py-32 px-6 overflow-hidden">
-  <!-- Faded mascot background -->
-  <div class="absolute inset-0 z-0 flex justify-center items-center opacity-20 pointer-events-none">
-    <img src="/mascot.jpg" alt="Background Mascot" class="max-w-2xl w-full object-cover object-center blur-[2px]" />
-  </div>
+<section class="bg-black text-white py-16 lg:py-24 px-6">
+  <div class="max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12">
+    <!-- Left Column: Text & Logo -->
+    <div class="flex-1 text-center lg:text-left flex flex-col items-center lg:items-start">
+      <img src="/titanium-logo.jpg" alt="Titanium Roofing Logo" class="max-w-xs md:max-w-sm w-full mb-8 rounded-lg shadow-md" />
+      <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
+        Straight Shooting. Honest Inspections.
+        <span class="block text-[#E1251B] mt-2">{displayTitle}</span>
+      </h1>
+      <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-2xl">
+        No storm chasers. No high-pressure sales BS. Just your local {location ? location : 'Riverview/Tampa'} guys providing quality roofs built to last.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+        <a href="#quote" class="bg-[#E1251B] hover:bg-red-700 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors shadow-lg text-center">
+          Get a Free, No-BS Quote
+        </a>
+        <a href="tel:5551234567" class="bg-transparent hover:bg-slate-900 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors ring-2 ring-slate-400 text-center">
+          Call (555) 123-4567
+        </a>
+      </div>
+    </div>
 
-  <div class="relative z-10 max-w-4xl mx-auto text-center flex flex-col items-center">
-    <img src="/titanium-logo.jpg" alt="Titanium Roofing Logo" class="max-w-md w-full mb-10 mx-auto" />
-    <h1 class="text-5xl font-extrabold tracking-tight sm:text-6xl mb-6">
-      Straight Shooting. Honest Inspections.
-      <span class="block text-[#E1251B] mt-2">{displayTitle}</span>
-    </h1>
-    <p class="text-xl text-slate-300 mb-10 max-w-2xl mx-auto">
-      No storm chasers. No high-pressure sales BS. Just your local {location ? location : 'Riverview/Tampa'} guys providing quality roofs built to last.
-    </p>
-    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      <a href="#quote" class="bg-[#E1251B] hover:bg-red-700 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors shadow-lg">
-        Get a Free, No-BS Quote
-      </a>
-      <a href="tel:5551234567" class="bg-transparent hover:bg-slate-900 text-white px-8 py-4 rounded-md font-bold text-lg transition-colors ring-2 ring-slate-400">
-        Call (555) 123-4567
-      </a>
+    <!-- Right Column: Mascot -->
+    <div class="flex-1 w-full max-w-md lg:max-w-none flex justify-center lg:justify-end">
+      <img src="/mascot.jpg" alt="Titanium Roofing Mascot" class="w-full max-w-lg rounded-2xl shadow-2xl border-4 border-[#E1251B]/20" />
     </div>
   </div>
 </section>
