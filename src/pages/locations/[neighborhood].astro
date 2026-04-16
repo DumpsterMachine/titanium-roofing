@@ -4,12 +4,9 @@ import Hero from '../../components/Hero.astro';
 import Guarantees from '../../components/Guarantees.astro';
 import Services from '../../components/Services.astro';
 import LeadForm from '../../components/LeadForm.astro';
-import fs from 'fs';
+import neighborhoods from '../../titanium_neighborhoods.json';
 
 export async function getStaticPaths() {
-  const filePath = path.join(process.cwd(), 'src/titanium_neighborhoods.json');
-  const neighborhoods = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-  
   return neighborhoods.map((neighborhood) => {
     // "Town 'n' Country" -> "town-n-country", "San Antonio (FL)" -> "san-antonio-fl"
     const slug = neighborhood.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
