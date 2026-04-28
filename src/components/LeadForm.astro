@@ -5,32 +5,62 @@
     <h2 class="text-3xl md:text-4xl font-bold mb-6">Get Your Honest Roof Assessment</h2>
     <p class="text-red-100 mb-10 text-lg">Fill out the form below and we'll reach out to schedule your free inspection. No pressure, no obligations.</p>
     
-    <form class="bg-white p-8 rounded-lg shadow-xl text-left" action="#" method="POST" onsubmit="event.preventDefault(); alert('Form submitted! (Mocked for now)');">
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+    <form id="quote-form" class="bg-white p-8 rounded-lg shadow-xl text-left space-y-4">
+      <input type="hidden" name="source" value="Titanium Roofing" />
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div>
           <label class="block text-sm font-medium text-slate-700 mb-2" for="name">Full Name</label>
-          <input type="text" id="name" class="w-full px-4 py-3 rounded-md border border-slate-300 focus:ring-2 focus:ring-[#E1251B] focus:border-[#E1251B] outline-none text-slate-900" placeholder="John Doe" required>
+          <input type="text" id="name" name="name" class="w-full px-4 py-3 rounded-md border border-slate-300 focus:ring-2 focus:ring-[#E1251B] focus:border-[#E1251B] outline-none text-slate-900" placeholder="John Doe" required>
         </div>
         <div>
           <label class="block text-sm font-medium text-slate-700 mb-2" for="phone">Phone Number</label>
-          <input type="tel" id="phone" class="w-full px-4 py-3 rounded-md border border-slate-300 focus:ring-2 focus:ring-[#E1251B] focus:border-[#E1251B] outline-none text-slate-900" placeholder="(813) 410-7158" required>
+          <input type="tel" id="phone" name="phone" class="w-full px-4 py-3 rounded-md border border-slate-300 focus:ring-2 focus:ring-[#E1251B] focus:border-[#E1251B] outline-none text-slate-900" placeholder="(813) 410-7158" required>
         </div>
       </div>
       
-      <div class="mb-6">
+      <div>
         <label class="block text-sm font-medium text-slate-700 mb-2" for="address">Property Address</label>
-        <input type="text" id="address" class="w-full px-4 py-3 rounded-md border border-slate-300 focus:ring-2 focus:ring-[#E1251B] focus:border-[#E1251B] outline-none text-slate-900" placeholder="123 Main St, Riverview, FL" required>
+        <input type="text" id="address" name="address" class="w-full px-4 py-3 rounded-md border border-slate-300 focus:ring-2 focus:ring-[#E1251B] focus:border-[#E1251B] outline-none text-slate-900" placeholder="123 Main St, Riverview, FL" required>
       </div>
       
-      <div class="mb-8">
+      <div>
         <label class="block text-sm font-medium text-slate-700 mb-2" for="details">What do you need help with?</label>
-        <textarea id="details" rows="4" class="w-full px-4 py-3 rounded-md border border-slate-300 focus:ring-2 focus:ring-[#E1251B] focus:border-[#E1251B] outline-none text-slate-900" placeholder="I have a leak in my living room ceiling..."></textarea>
+        <textarea id="details" name="details" rows="4" class="w-full px-4 py-3 rounded-md border border-slate-300 focus:ring-2 focus:ring-[#E1251B] focus:border-[#E1251B] outline-none text-slate-900" placeholder="I have a leak in my living room ceiling..."></textarea>
       </div>
       
-      <button type="submit" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 px-8 rounded-md transition-colors text-lg">
+      <button type="submit" id="submit-btn" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-4 px-8 rounded-md transition-colors text-lg">
         Request Free Inspection
       </button>
       <p class="text-xs text-slate-500 text-center mt-4">We respect your privacy. Your information is never sold.</p>
     </form>
   </div>
 </section>
+
+<script>
+  document.getElementById('quote-form')?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const btn = document.getElementById('submit-btn') as HTMLButtonElement;
+    const formData = new FormData(form);
+    const data = Object.fromEntries(formData.entries());
+    
+    btn.textContent = 'Sending...';
+    btn.disabled = true;
+
+    try {
+      await fetch('https://hook.us2.make.com/wkqhpnc2s146y9ngwtlopaapwusyjiwu', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data),
+      });
+      alert('Request submitted! We will be in touch soon.');
+      form.reset();
+    } catch (error) {
+      console.error('Error:', error);
+      alert('There was a problem submitting your request. Please try again.');
+    } finally {
+      btn.textContent = 'Request Free Inspection';
+      btn.disabled = false;
+    }
+  });
+</script>
