@@ -1,5 +1,6 @@
 ---
 const { name } = Astro.props;
+
 const breadcrumbList = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -26,6 +27,30 @@ const localBusiness = {
     "name": `${name}, FL`
   }
 };
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `Do I need a permit for roofing in ${name}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Most roofing projects in ${name} require local authorization. Check city hall guidelines.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `How long do roofing projects take in ${name}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Every project in ${name} is unique, but our experienced local crews work efficiently to minimize disruption.`
+      }
+    }
+  ]
+};
 ---
 <script type="application/ld+json" set:html={JSON.stringify(breadcrumbList)} />
 <script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
