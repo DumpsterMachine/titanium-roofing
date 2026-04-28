@@ -31,8 +31,18 @@ const { name } = Astro.props;
 
   <section class="py-16 bg-white border-t border-slate-100">
     <div class="max-w-6xl mx-auto px-6">
-      <h3 class="text-2xl font-bold mb-4">Serving {name} and Surrounding Communities</h3>
-      <p class="text-slate-600 mb-6">Titanium Roofing is proud to provide honest, reliable roofing services in {name} and across the Tampa Bay area.</p>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div>
+          <h3 class="text-2xl font-bold mb-4">Why Titanium Roofing in {name}?</h3>
+          <p class="text-slate-600 mb-6">
+            We know the {name} area. From local zoning requirements to the specific challenges of {name} weather conditions, our team is equipped to handle your roof with precision. We pride ourselves on being your trusted, local roofing partner—not storm chasers.
+          </p>
+        </div>
+        <div>
+          <h3 class="text-2xl font-bold mb-4">Serving {name} and Surrounding Communities</h3>
+          <p class="text-slate-600 mb-6">Titanium Roofing provides top-tier roofing services across the Tampa Bay region, with a special focus on providing timely, honest assessments for your home in {name}.</p>
+        </div>
+      </div>
     </div>
   </section>
   
