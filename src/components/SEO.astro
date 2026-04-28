@@ -1,0 +1,31 @@
+---
+const { name } = Astro.props;
+const breadcrumbList = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.titaniumroofingllc.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Locations", "item": "https://www.titaniumroofingllc.com/locations" },
+    { "@type": "ListItem", "position": 3, "name": name, "item": `https://www.titaniumroofingllc.com/locations/${name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}` }
+  ]
+};
+
+const localBusiness = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "name": `Titanium Roofing - ${name}`,
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": name,
+    "addressRegion": "FL",
+    "addressCountry": "US"
+  },
+  "url": `https://www.titaniumroofingllc.com/locations/${name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`,
+  "areaServed": {
+    "@type": "City",
+    "name": `${name}, FL`
+  }
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbList)} />
+<script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />

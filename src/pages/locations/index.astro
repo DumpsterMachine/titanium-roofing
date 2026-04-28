@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import neighborhoods from '../../titanium_neighborhoods.json';
+
+const sortedNeighborhoods = neighborhoods.sort();
+---
+
+<Layout title="Titanium Roofing | Service Areas">
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <h1 class="text-4xl font-black uppercase text-slate-900 mb-12 text-center">Service Areas: Tampa Bay</h1>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                {sortedNeighborhoods.map(name => {
+                    const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                    return (
+                        <a href={`/locations/${slug}`} class="bg-white p-4 shadow-sm border border-slate-200 rounded-sm hover:shadow-md transition-shadow hover:border-[#E1251B] font-bold text-center block">
+                            {name}
+                        </a>
+                    )
+                })}
+            </div>
+        </div>
+    </section>
+</Layout>

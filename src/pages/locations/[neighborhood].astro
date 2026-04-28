@@ -17,6 +17,8 @@ export async function getStaticPaths() {
   });
 }
 
+import SEO from '../../components/SEO.astro';
+
 const { name } = Astro.props;
 ---
 
@@ -24,6 +26,7 @@ const { name } = Astro.props;
   title={`Titanium Roofing in ${name} | Local Roofers`}
   description={`Looking for the best roofing company in ${name}? Titanium Roofing offers honest inspections and reliable service in ${name}, FL.`}
 >
+  <SEO name={name} />
   <Hero location={name} />
   <Guarantees />
   <Services />
