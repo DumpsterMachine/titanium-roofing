@@ -27,6 +27,7 @@ const { name } = Astro.props;
   description={`Looking for the best roofing company in ${name}? Titanium Roofing offers honest inspections and reliable service in ${name}, FL.`}
 >
   <SEO name={name} />
+  <link rel="canonical" href={`https://www.titaniumroofingllc.com/locations/${name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`} />
   <!-- Floating Mobile CTA -->
   <div class="fixed bottom-0 left-0 right-0 p-4 bg-white border-t border-slate-200 z-50 md:hidden flex gap-2">
     <a href="tel:8134107158" class="flex-1 bg-green-600 text-white font-bold py-3 text-center rounded-sm text-sm">Call Now</a>
