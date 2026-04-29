@@ -10,19 +10,40 @@ export async function getStaticPaths() {
 }
 
 const { guide } = Astro.props;
+
+const contentMap = {
+  "florida-roofing-materials": `
+    <h2 class="text-2xl font-bold mb-4">Why Shingle Roofs are Standard in Florida</h2>
+    <p class="mb-4">Asphalt shingles are the most common roofing material in Tampa Bay. They are cost-effective and easy to repair after minor storm damage. However, in Florida's high humidity, they require regular inspections to prevent algae growth and granular loss.</p>
+    <h2 class="text-2xl font-bold mb-4">The Case for Metal Roofing</h2>
+    <p class="mb-4">Metal roofs have become the gold standard for hurricane-prone areas. They offer superior wind resistance and can last 40+ years. While the initial investment is higher, the energy efficiency and longevity often make them the smarter financial choice for long-term Florida homeowners.</p>
+  `,
+  "spot-roof-damage": `
+    <h2 class="text-2xl font-bold mb-4">Look for the "Invisible" Signs</h2>
+    <p class="mb-4">Storm damage isn't always missing shingles. Often, it's subtle: water stains on your ceiling, sagging roof decking, or shingles that are curling at the edges.</p>
+    <h2 class="text-2xl font-bold mb-4">When to Call a Pro</h2>
+    <p class="mb-4">If you see granules in your gutters or have experienced heavy winds above 50mph, it is worth a no-pressure inspection to ensure your roof's integrity is intact.</p>
+  `,
+  "permit-guide": `
+    <h2 class="text-2xl font-bold mb-4">Why Permits Matter in Florida</h2>
+    <p class="mb-4">Roofing permits are not just "red tape"—they are your insurance policy. A permitted roof ensures the installation meets current Florida Building Code hurricane-resistance standards.</p>
+    <h2 class="text-2xl font-bold mb-4">Our Permit Process</h2>
+    <p class="mb-4">We handle everything. From application to final inspection, we ensure the city signs off on the work so you can rest easy knowing your roof is documented and compliant.</p>
+  `
+};
+
+const content = contentMap[guide.slug] || "<p>Guide content coming soon.</p>";
 ---
 <Layout title={`${guide.title} | Titanium Roofing`}>
     <section class="py-20 bg-white">
         <div class="max-w-4xl mx-auto px-6">
             <a href="/guides" class="text-[#E1251B] font-bold mb-6 inline-block">← Back to Guides</a>
             <h1 class="text-4xl font-black uppercase text-slate-900 mb-6">{guide.title}</h1>
-            <div class="prose lg:prose-xl text-slate-700">
-                <p>{guide.summary}</p>
-                <div class="mt-12 bg-slate-50 p-8 rounded-sm">
-                    <h3 class="font-bold text-lg mb-2">Need a pro to look at your roof?</h3>
-                    <p>We're local to Tampa Bay and provide honest, no-pressure inspections.</p>
-                    <a href="/locations" class="inline-block bg-[#E1251B] text-white font-bold py-3 px-6 mt-4 rounded-sm">Find Your Area</a>
-                </div>
+            <div class="prose lg:prose-xl text-slate-700" set:html={content} />
+            <div class="mt-12 bg-slate-50 p-8 rounded-sm">
+                <h3 class="font-bold text-lg mb-2">Need a pro to look at your roof?</h3>
+                <p>We're local to Tampa Bay and provide honest, no-pressure inspections.</p>
+                <a href="/locations" class="inline-block bg-[#E1251B] text-white font-bold py-3 px-6 mt-4 rounded-sm">Find Your Area</a>
             </div>
         </div>
     </section>
