@@ -49,6 +49,27 @@ const { name } = Astro.props;
   <Services />
   <LeadForm />
 
+  <section class="py-16 bg-slate-50 border-t border-slate-100">
+    <div class="max-w-6xl mx-auto px-6">
+      <h3 class="text-2xl font-bold mb-8">Recent Projects in {name}</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white p-4 shadow-sm border border-slate-200">
+          <img src="/crew.jpg" alt={`Recent roof replacement in ${name}`} class="w-full h-48 object-cover mb-4 rounded-sm" />
+          <p class="text-sm font-bold text-slate-900">Residential Shingle Replacement</p>
+        </div>
+        <div class="bg-white p-4 shadow-sm border border-slate-200">
+          <img src="/crew.jpg" alt={`Roof inspection in ${name}`} class="w-full h-48 object-cover mb-4 rounded-sm" />
+          <p class="text-sm font-bold text-slate-900">Professional Roof Inspection</p>
+        </div>
+        <div class="bg-white p-4 shadow-sm border border-slate-200">
+          <img src="/crew.jpg" alt={`Metal roofing project in ${name}`} class="w-full h-48 object-cover mb-4 rounded-sm" />
+          <p class="text-sm font-bold text-slate-900">Metal Roof Installation</p>
+        </div>
+      </div>
+      <p class="mt-8 text-slate-600 italic">Have a project in {name}? <a href="#quote" class="text-[#E1251B] font-bold hover:underline">Get your project featured next!</a></p>
+    </div>
+  </section>
+
   <section class="py-16 bg-white border-t border-slate-100">
     <div class="max-w-6xl mx-auto px-6">
       <div class="grid md:grid-cols-2 gap-12">
