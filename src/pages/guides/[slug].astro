@@ -1,0 +1,29 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import guides from '../../data/guides.json';
+
+export async function getStaticPaths() {
+    return guides.map(guide => ({
+        params: { slug: guide.slug },
+        props: { guide }
+    }));
+}
+
+const { guide } = Astro.props;
+---
+<Layout title={`${guide.title} | Titanium Roofing`}>
+    <section class="py-20 bg-white">
+        <div class="max-w-4xl mx-auto px-6">
+            <a href="/guides" class="text-[#E1251B] font-bold mb-6 inline-block">← Back to Guides</a>
+            <h1 class="text-4xl font-black uppercase text-slate-900 mb-6">{guide.title}</h1>
+            <div class="prose lg:prose-xl text-slate-700">
+                <p>{guide.summary}</p>
+                <div class="mt-12 bg-slate-50 p-8 rounded-sm">
+                    <h3 class="font-bold text-lg mb-2">Need a pro to look at your roof?</h3>
+                    <p>We're local to Tampa Bay and provide honest, no-pressure inspections.</p>
+                    <a href="/locations" class="inline-block bg-[#E1251B] text-white font-bold py-3 px-6 mt-4 rounded-sm">Find Your Area</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>
