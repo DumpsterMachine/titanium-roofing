@@ -1,0 +1,19 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import guides from '../../data/guides.json';
+---
+<Layout title="Roofing Guides | Titanium Roofing">
+    <section class="py-20 bg-slate-50">
+        <div class="max-w-6xl mx-auto px-6">
+            <h1 class="text-4xl font-black uppercase text-slate-900 mb-12 text-center">Roofing Education Hub</h1>
+            <div class="grid md:grid-cols-3 gap-8">
+                {guides.map(guide => (
+                    <a href={`/guides/${guide.slug}`} class="bg-white p-8 shadow-sm border border-slate-200 rounded-sm hover:border-[#E1251B] transition">
+                        <h2 class="text-xl font-bold mb-4">{guide.title}</h2>
+                        <p class="text-slate-600">{guide.summary}</p>
+                    </a>
+                ))}
+            </div>
+        </div>
+    </section>
+</Layout>
